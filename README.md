@@ -1,6 +1,7 @@
 # Sense/Net ECM Installer
 This is a Windows desktop application for installing [Sense/Net ECM](https://github.com/SenseNet/sensenet) from scratch, or executing upgrade packages. Please visit the release link below for the easiest way to get the installer - or you can check out this repo and build it yourself.
 
+[![Join the chat at https://gitter.im/SenseNet/sn-installer](https://badges.gitter.im/SenseNet/sn-installer.svg)](https://gitter.im/SenseNet/sn-installer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub release](https://img.shields.io/github/release/sensenet/sn-installer.png)](https://github.com/SenseNet/sn-installer/releases)
 
 ## Prerequisites
