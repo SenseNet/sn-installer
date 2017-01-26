@@ -3,8 +3,6 @@ This is a Windows desktop application for installing [Sense/Net ECM](https://git
 
 [![GitHub release](https://img.shields.io/github/release/sensenet/sn-installer.png)](https://github.com/SenseNet/sn-installer/releases)
 
-![SnInstaller welcome screen](http://wiki.sensenet.com/images/0/07/Sninstaller.PNG "SnInstaller welcome screen")
-
 ## Prerequisites
 
 ### Environment
