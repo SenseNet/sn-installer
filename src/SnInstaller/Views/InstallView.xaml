@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="SenseNet.Installer.Views.InstallView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SenseNet.Installer.Views"
+             xmlns:prop="clr-namespace:SenseNet.Installer.Properties"
+             xmlns:loading="clr-namespace:LoadingIndicators.WPF;assembly=LoadingIndicators.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="501.5" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Colors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingWave.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock Style="{StaticResource HeaderMain}" Text="{x:Static prop:Resources.InstallPage_Title}" />
+        <StackPanel Style="{StaticResource PageBody}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="220"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" Text="{Binding Path=ConsoleText, Mode=OneWay}" IsReadOnly="True" Background="#e1e8f4" Padding="3"
+                         IsReadOnlyCaretVisible="True" Width="auto" VerticalScrollBarVisibility="Auto" 
+                         TextWrapping="Wrap" TextChanged="TextBox_TextChanged" />
+                <TextBlock Grid.Row="1" Style="{StaticResource BodyText}" VerticalAlignment="Center" TextWrapping="Wrap" 
+                           Text="{Binding InstallStatusText}" Padding="0,10,0,0" />
+                <TextBlock Grid.Row="1" Style="{StaticResource ErrorText}" VerticalAlignment="Center" TextWrapping="Wrap"
+                           Text="{x:Static prop:Resources.InstallStatus_Finished_Error_DuringSnAdmin}" Margin="0,5,0,5"
+                           Visibility="{Binding InstallFailed, Converter={StaticResource BoolToVisible}}"/>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Visibility="{Binding InstallCompleted, Converter={StaticResource BoolToVisible}}" Margin="0,5,0,5">
+                        <Hyperlink NavigateUri="{Binding LogFolderPath, StringFormat=file://{0}}" RequestNavigate="LogFolder_Hyperlink_RequestNavigate">
+                            <TextBlock Text="{x:Static prop:Resources.InstallPage_Link_OpenLogFolder}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" Visibility="{Binding NewInstallCompleted, Converter={StaticResource BoolToVisible}}" Margin="0,5,0,5">
+                        <Hyperlink NavigateUri="{Binding WebsiteBinding}" RequestNavigate="Website_Hyperlink_RequestNavigate">
+                            <TextBlock Text="{Binding WebsiteBinding}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
+                <loading:LoadingIndicator Grid.Row="3" SpeedRatio="1" IsActive="{Binding Working}" 
+                                          Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"
+                                          Width="50" Height="50" Margin="10"/>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

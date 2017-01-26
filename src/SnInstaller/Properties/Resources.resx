@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Button_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Button_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Button_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="DatabasePage_Choice_RecreateDb" xml:space="preserve">
+    <value>Drop and re-create database. If you uncheck this checkbox, we will still clear and recreate tables in the database, but will not drop the db itself.</value>
+  </data>
+  <data name="DatabasePage_Details" xml:space="preserve">
+    <value>Please provide a connection to the database server.</value>
+  </data>
+  <data name="DatabasePage_FormLabel_DatabaseName" xml:space="preserve">
+    <value>Database name</value>
+  </data>
+  <data name="DatabasePage_FormLabel_ServerName" xml:space="preserve">
+    <value>SQL server</value>
+  </data>
+  <data name="DatabasePage_Message_DbAlreadyExists" xml:space="preserve">
+    <value>Database already exists. Please decide what should we do with it.</value>
+  </data>
+  <data name="DatabasePage_Message_Error_DbConnection" xml:space="preserve">
+    <value>Error when connecting to the database server. Please make sure that you provided the correct names and you have enough permissions.</value>
+  </data>
+  <data name="DatabasePage_Title" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="Form_Validation_FillAllValues" xml:space="preserve">
+    <value>Please fill all the values.</value>
+  </data>
+  <data name="InstallPage_Link_OpenLogFolder" xml:space="preserve">
+    <value>Open log folder</value>
+  </data>
+  <data name="InstallPage_Title" xml:space="preserve">
+    <value>Install Sense/Net ECM</value>
+  </data>
+  <data name="InstallStatus_CopyingPackage" xml:space="preserve">
+    <value>Copying package...</value>
+  </data>
+  <data name="InstallStatus_CreatingWebSite" xml:space="preserve">
+    <value>Creating website...</value>
+  </data>
+  <data name="InstallStatus_ExecutingPackage" xml:space="preserve">
+    <value>Executing package...</value>
+  </data>
+  <data name="InstallStatus_Finished" xml:space="preserve">
+    <value>Install finished, you may visit the new site or open the log file for details.</value>
+  </data>
+  <data name="InstallStatus_Finished_Error_BeforeSnAdmin" xml:space="preserve">
+    <value>Install finished with error.</value>
+  </data>
+  <data name="InstallStatus_Finished_Error_DuringSnAdmin" xml:space="preserve">
+    <value>Install finished with error, please check the log file for details.</value>
+  </data>
+  <data name="InstallStatus_PreparingWebfolder" xml:space="preserve">
+    <value>Preparing web folder...</value>
+  </data>
+  <data name="InstallStatus_ReadyToGo" xml:space="preserve">
+    <value>Preparations completed, hit the Install button when ready.</value>
+  </data>
+  <data name="PackagePage_Details" xml:space="preserve">
+    <value>Select the package you want to install.</value>
+  </data>
+  <data name="PackagePage_FormLabel_PackagePath" xml:space="preserve">
+    <value>Package path</value>
+  </data>
+  <data name="PackagePage_Message_InvalidPackageFile" xml:space="preserve">
+    <value>Please choose a valid package.</value>
+  </data>
+  <data name="PackagePage_OpenFile_FilterText" xml:space="preserve">
+    <value>Package files (*.zip)</value>
+  </data>
+  <data name="PackagePage_Title" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="SelectWebsitePage_Details" xml:space="preserve">
+    <value>Choose a website where you want to install the package.</value>
+  </data>
+  <data name="SelectWebsitePage_FormLabel_WebsitePath" xml:space="preserve">
+    <value>Website folder:</value>
+  </data>
+  <data name="SelectWebsitePage_Message_Error_SelectSite" xml:space="preserve">
+    <value>Please select an existing website.</value>
+  </data>
+  <data name="SelectWebsitePage_Title" xml:space="preserve">
+    <value>Select website</value>
+  </data>
+  <data name="WebsitePage_AddToHosts_Description" xml:space="preserve">
+    <value>Add url to hosts file. This will let you access this custom url without DNS registration.</value>
+  </data>
+  <data name="WebsitePage_AppPool_Description" xml:space="preserve">
+    <value>Choose the identity for the new website's application pool. The choosen account (in most cases a domain user) has to have access to the web folder and the database.</value>
+  </data>
+  <data name="WebsitePage_CustomIdentity_Description" xml:space="preserve">
+    <value>Please provide a user with the correct password. It can be the currently logged in user (in the domain\username form). This can be changed later in IIS Manager.</value>
+  </data>
+  <data name="WebsitePage_Details" xml:space="preserve">
+    <value>Please provide the details for the new IIS site.</value>
+  </data>
+  <data name="WebsitePage_FormLabel_AppPool" xml:space="preserve">
+    <value>App pool identity</value>
+  </data>
+  <data name="WebsitePage_FormLabel_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="WebsitePage_FormLabel_SiteName" xml:space="preserve">
+    <value>Website name</value>
+  </data>
+  <data name="WebsitePage_FormLabel_Url" xml:space="preserve">
+    <value>URL (website binding)</value>
+  </data>
+  <data name="WebsitePage_FormLabel_Url_Description" xml:space="preserve">
+    <value>(e.g. example.com or localhost:123)</value>
+  </data>
+  <data name="WebsitePage_FormLabel_Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="WebsitePage_FormLabel_WebfolderPath" xml:space="preserve">
+    <value>Web folder path</value>
+  </data>
+  <data name="WebsitePage_Message_DirectoryNotEmpty" xml:space="preserve">
+    <value>Please choose an empty folder for the website.</value>
+  </data>
+  <data name="WebsitePage_Message_Error_Webfolder" xml:space="preserve">
+    <value>Invalid web folder or you do not have enough permissions to create the directory.</value>
+  </data>
+  <data name="WebsitePage_Message_Error_WebsiteAdmin" xml:space="preserve">
+    <value>Error when trying to manage website.</value>
+  </data>
+  <data name="WebsitePage_Message_IncorrectUrl" xml:space="preserve">
+    <value>Please provide a valid url.</value>
+  </data>
+  <data name="WebsitePage_Message_WebsiteBindingExists" xml:space="preserve">
+    <value>This url belongs to an existing website. Do you want to continue?</value>
+  </data>
+  <data name="WebsitePage_Message_WebsiteExists" xml:space="preserve">
+    <value>This website already exists. Are you sure you want to use it?</value>
+  </data>
+  <data name="WebsitePage_Title" xml:space="preserve">
+    <value>IIS website</value>
+  </data>
+  <data name="WelcomePage_Details" xml:space="preserve">
+    <value>Please choose from the following options:</value>
+  </data>
+  <data name="WelcomePage_Title" xml:space="preserve">
+    <value>Welcome to Sense/Net ECM Installer</value>
+  </data>
+</root>

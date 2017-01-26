@@ -1,0 +1,65 @@
+﻿<Window x:Class="SenseNet.Installer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:snvm="clr-namespace:SenseNet.Installer.ViewModels"
+        xmlns:snv="clr-namespace:SenseNet.Installer.Views"
+        mc:Ignorable="d"
+        Title="Sense/Net ECM Installer" Height="660" Width="780" WindowStyle="ToolWindow" 
+        ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize" Closing="MainWindow_OnClosing">
+    <Window.DataContext>
+        <snvm:InstallerViewModel />
+    </Window.DataContext>
+    <StackPanel Orientation="Horizontal">
+        <Grid Width="150">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0190D5" Offset="0.0" />
+                    <GradientStop Color="#32CA69" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="Content/Images/sensenet.png" Grid.Row="1" Margin="10"/>
+        </Grid>
+        <Grid Width="600" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
+                <TabControl BorderThickness="0" SelectedIndex="{Binding Path=CurrentPageIndex}">
+                    <TabItem Header="Welcome" Visibility="Collapsed">
+                        <snv:WelcomeView />
+                    </TabItem>
+                    <TabItem Header="Create IIS site" Visibility="Collapsed">
+                        <snv:CreateWebsiteView />
+                    </TabItem>
+                    <TabItem Header="Select IIS site" Visibility="Collapsed">
+                        <snv:SelectWebsiteView />
+                    </TabItem>
+                    <TabItem Header="Database" Visibility="Collapsed">
+                        <snv:DatabaseView />
+                    </TabItem>
+                    <TabItem Header="Package" Visibility="Collapsed">
+                        <snv:PackageView />
+                    </TabItem>
+                    <TabItem Header="Install" Visibility="Collapsed">
+                        <snv:InstallView />
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+            <DockPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Previous" Command="{Binding PreviousCommand}" Visibility="{Binding PreviousCommandVisibility}" Style="{StaticResource Button}" />
+                    <Button Content="Next" Command="{Binding NextCommand}" Visibility="{Binding NextCommandVisibility}" Style="{StaticResource Button}" />
+                    <Button Content="Install"  Command="{Binding InstallCommand}" Visibility="{Binding InstallCommandVisibility}" Style="{StaticResource Button}" />
+                    <Button Content="Finish"  Command="{Binding FinishCommand}" Visibility="{Binding FinishCommandVisibility}" Style="{StaticResource Button}" />
+                </StackPanel>
+            </DockPanel>
+        </Grid>
+    </StackPanel>
+</Window>
