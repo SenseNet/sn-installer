@@ -35,6 +35,9 @@
                     <TabItem Header="Welcome" Visibility="Collapsed">
                         <snv:WelcomeView />
                     </TabItem>
+                    <TabItem Header="Packages" Visibility="Collapsed">
+                        <snv:PackageListView />
+                    </TabItem>
                     <TabItem Header="Create IIS site" Visibility="Collapsed">
                         <snv:CreateWebsiteView />
                     </TabItem>

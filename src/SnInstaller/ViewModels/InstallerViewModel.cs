@@ -138,7 +138,7 @@ namespace SenseNet.Installer.ViewModels
         {
             get
             {
-                return _websFolderPath;
+                return _websFolderPath ?? string.Empty;
             }
             set
             {
@@ -352,6 +352,22 @@ namespace SenseNet.Installer.ViewModels
             }
         }
 
+        private ObservableCollection<PackageItem> _packageItems = new ObservableCollection<PackageItem>
+        {
+            new PackageItem("SenseNet.Services", "sensenet ECM Services", "Main sensenet ECM component"),
+            new PackageItem("SenseNet.WebPages", "sensenet ECM WebPages", "ASP.NET WebForms UI for sensenet ECM"),
+            new PackageItem("SenseNet.Workspaces", "sensenet ECM Workspaces", "Workspaces component for sensenet ECM"),
+            new PackageItem("SenseNet.Notification", "sensenet ECM Notification", "Notification feature for sensenet ECM")
+        };
+
+        public ObservableCollection<PackageItem> PackageItems
+        {
+            get
+            {
+                return _packageItems;
+            }
+        }
+
         #endregion
 
         #region Install properties
@@ -427,7 +443,7 @@ namespace SenseNet.Installer.ViewModels
 
         #region Navigation properties
         
-        private int _currentPageIndex;
+        private int _currentPageIndex = 1;
         public int CurrentPageIndex
         {
             get

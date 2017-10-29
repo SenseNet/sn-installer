@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SenseNet.Installer.Views.PackageListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SenseNet.Installer.Views"
+             xmlns:prop="clr-namespace:SenseNet.Installer.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="469">
+    <StackPanel>
+        <TextBlock Style="{StaticResource HeaderMain}" Text="Select packages" />
+        <StackPanel Style="{StaticResource MessagePanel}" Margin="5" Visibility="Collapsed">
+            <TextBlock TextWrapping="Wrap" FontSize="12" Text="" Width="464" />
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Path=PackageItems}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox VerticalAlignment="Center" Grid.Column="0" IsChecked="{Binding Selected}" />
+                        <Image Source="{Binding IconUrl}" Grid.Column="1"/>
+                        <StackPanel Margin="10" Grid.Column="2">
+                            <TextBlock Text="{Binding Id}" FontSize="18" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}" FontSize="12" Foreground="Gray"/>
+                        </StackPanel>
+                        <ComboBox HorizontalAlignment="Right" SelectedIndex="{Binding SelectedVersionIndex}" Height="25" Grid.Column="3" ItemsSource="{Binding Versions}">
+                        </ComboBox>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
