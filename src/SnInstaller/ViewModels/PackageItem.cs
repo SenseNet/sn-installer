@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SenseNet.Installer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +19,16 @@ namespace SenseNet.Installer.ViewModels
         public List<string> Versions { get; private set; } //UNDONE: handle when selected item is changed
         public int SelectedVersionIndex { get; set; }
 
-        public PackageItem(string id, string title, string description = null, string icon = "/sensenet.ico")
+        public static PackageItem ConvertFrom(PackageData packageData)
         {
-            Id = id;
-            Title = title;
-            Description = description;
-            IconUrl = icon;
-
-            Versions = new List<string> { "7.0.0-beta1", "7.0.0-beta2" };
+            return new PackageItem
+            {
+                Id = packageData.Id,
+                IconUrl = packageData.IconUrl,
+                Title = packageData.Title,
+                Description = packageData.Description,
+                Versions = packageData.Versions.Select(v => v.Id).ToList()
+            };
         }
                 
         public string GetSelectedPackage()

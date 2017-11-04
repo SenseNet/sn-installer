@@ -6,6 +6,7 @@ using System.Linq;
 using System.IO.Compression;
 using System.Text;
 using System.Threading.Tasks;
+using SenseNet.Installer.Models;
 
 namespace SenseNet.Installer
 {
@@ -134,5 +135,15 @@ namespace SenseNet.Installer
 
             return result;
         }
+
+
+        private static PackageData[] _samplePackages = PackageData.SampleFeed;
+
+        public static async Task<PackageData[]> GetPackages()
+        {
+            await Task.Delay(2000);
+
+            return _samplePackages;
+        }                
     }
 }

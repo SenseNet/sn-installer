@@ -352,19 +352,18 @@ namespace SenseNet.Installer.ViewModels
             }
         }
 
-        private ObservableCollection<PackageItem> _packageItems = new ObservableCollection<PackageItem>
-        {
-            new PackageItem("SenseNet.Services", "sensenet ECM Services", "Main sensenet ECM component"),
-            new PackageItem("SenseNet.WebPages", "sensenet ECM WebPages", "ASP.NET WebForms UI for sensenet ECM"),
-            new PackageItem("SenseNet.Workspaces", "sensenet ECM Workspaces", "Workspaces component for sensenet ECM"),
-            new PackageItem("SenseNet.Notification", "sensenet ECM Notification", "Notification feature for sensenet ECM")
-        };
+        private ObservableCollection<PackageItem> _packageItems = new ObservableCollection<PackageItem>();
 
         public ObservableCollection<PackageItem> PackageItems
         {
             get
             {
                 return _packageItems;
+            }
+            set
+            {
+                _packageItems = value;
+                OnPropertyChanged();
             }
         }
 
@@ -479,6 +478,13 @@ namespace SenseNet.Installer.ViewModels
 
             UseExistingWebsiteCommand = DelegateCommand.FromAsyncHandler(OnUseExistingWebsiteCommand);
             UseExistingWebsiteBindingCommand = DelegateCommand.FromAsyncHandler(OnUseExistingWebsiteBindingCommand);
+
+            Task.Run(async () =>
+            {
+                var pi = await GetPackageItems();
+
+                this.PackageItems = new ObservableCollection<PackageItem>(pi);
+            });
         }
 
         #endregion
@@ -979,5 +985,17 @@ namespace SenseNet.Installer.ViewModels
         }
 
         #endregion
+
+
+
+
+
+
+        private static async Task<PackageItem[]> GetPackageItems()
+        {
+            var packages = await PackageManager.GetPackages();
+
+            return packages.Select(p => PackageItem.ConvertFrom(p)).ToArray();
+        }
     }
 }

@@ -102,6 +102,9 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Models\PackageData.cs" />
+    <Compile Include="Models\PackageDependency.cs" />
+    <Compile Include="Models\PackageVersion.cs" />
     <Compile Include="PackageManager.cs" />
     <Compile Include="ViewModels\InstallerViewModel.cs" />
     <Compile Include="ViewModels\PackageItem.cs" />
@@ -200,9 +203,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Content\Images\sensenet.png" />
   </ItemGroup>
