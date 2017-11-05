@@ -26,6 +26,8 @@ namespace SenseNet.Installer.ViewModels
         public enum PageType
         {
             Welcome,
+            PackageList,
+            GetPackages,
             CreateWebsite,
             SelectWebsite,
             Database,
@@ -364,6 +366,15 @@ namespace SenseNet.Installer.ViewModels
             {
                 _packageItems = value;
                 OnPropertyChanged();
+                OnSelectedPackagesChanged();
+            }
+        }
+
+        public IEnumerable<PackageItem> SelectedPackages
+        {
+            get
+            {
+                return PackageItems.Where(p => p.Selected);
             }
         }
 
@@ -425,7 +436,7 @@ namespace SenseNet.Installer.ViewModels
                 OnPropertyChanged();
             }
         }
-        public string LogFolderPath => Path.Combine(WebFolderPath, "Admin\\log");
+        public string LogFolderPath => Path.Combine(WebFolderPath ?? string.Empty, "Admin\\log");
 
         private bool _installFailed;
         public bool InstallFailed
@@ -506,7 +517,10 @@ namespace SenseNet.Installer.ViewModels
         }
         private bool CanExecutePreviousCommand()
         {
-            return CurrentPageType != PageType.Welcome && !Working && !InstallCompleted;
+            return CurrentPageType != PageType.Welcome &&
+                CurrentPageType != PageType.PackageList &&
+                !Working &&
+                !InstallCompleted;
         }
         public Visibility PreviousCommandVisibility => CanExecutePreviousCommand() ? Visibility.Visible : Visibility.Collapsed;
 
@@ -535,7 +549,9 @@ namespace SenseNet.Installer.ViewModels
             switch (CurrentPageType)
             {
                 case PageType.Welcome: return PageType.Welcome;
-                case PageType.CreateWebsite: return PageType.Welcome;
+                case PageType.PackageList: return PageType.PackageList;
+                case PageType.GetPackages: return PageType.PackageList;
+                case PageType.CreateWebsite: return PageType.GetPackages;
                 case PageType.SelectWebsite: return PageType.Welcome;
                 case PageType.Database: return PageType.CreateWebsite;
                 case PageType.Package:
@@ -557,6 +573,8 @@ namespace SenseNet.Installer.ViewModels
                         ? PageType.CreateWebsite 
                         : PageType.SelectWebsite;
 
+                case PageType.PackageList: return PageType.GetPackages;
+                case PageType.GetPackages: return PageType.CreateWebsite; //UNDONE: create or select, if Services package is selected or not
                 case PageType.CreateWebsite: return PageType.Database;
                 case PageType.SelectWebsite: return PageType.Package;
                 case PageType.Database: return PageType.Package;
@@ -984,6 +1002,11 @@ namespace SenseNet.Installer.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public void OnSelectedPackagesChanged()
+        {
+            OnPropertyChanged("SelectedPackages");
+        }
+
         #endregion
 
 
@@ -991,11 +1014,11 @@ namespace SenseNet.Installer.ViewModels
 
 
 
-        private static async Task<PackageItem[]> GetPackageItems()
+        private async Task<PackageItem[]> GetPackageItems()
         {
             var packages = await PackageManager.GetPackages();
 
-            return packages.Select(p => PackageItem.ConvertFrom(p)).ToArray();
+            return packages.Select(p => new PackageItem(this, p)).ToArray();
         }
     }
 }

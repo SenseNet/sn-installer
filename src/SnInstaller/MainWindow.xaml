@@ -38,6 +38,9 @@
                     <TabItem Header="Packages" Visibility="Collapsed">
                         <snv:PackageListView />
                     </TabItem>
+                    <TabItem Header="GetPackages" Visibility="Collapsed">
+                        <snv:GetPackagesView />
+                    </TabItem>
                     <TabItem Header="Create IIS site" Visibility="Collapsed">
                         <snv:CreateWebsiteView />
                     </TabItem>

@@ -108,6 +108,9 @@
     <Compile Include="PackageManager.cs" />
     <Compile Include="ViewModels\InstallerViewModel.cs" />
     <Compile Include="ViewModels\PackageItem.cs" />
+    <Compile Include="Views\GetPackagesView.xaml.cs">
+      <DependentUpon>GetPackagesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PackageListView.xaml.cs">
       <DependentUpon>PackageListView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\GetPackagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PackageListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,40 +1,64 @@
 ﻿using SenseNet.Installer.Models;
-using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace SenseNet.Installer.ViewModels
 {
-    public class PackageItem
+    public class PackageItem : INotifyPropertyChanged
     {
-        public bool Selected { get; set; }
+        private bool _selected;
+        public bool Selected
+        {
+            get { return _selected; }
+            set
+            {
+                _selected = value;
+                _viewModel.OnSelectedPackagesChanged();
+            }
+        }
 
-        public string Id { get; private set; }
-        public string IconUrl { get; private set; }
-        public string Title { get; private set; }
-        public string Description { get; private set; }
+        public string Id => _packageData.Id;
+        public string IconUrl => _packageData.IconUrl;
+        public string Title => _packageData.Title;
+        public string Description => _packageData.Description;
 
-        public List<string> Versions { get; private set; } //UNDONE: handle when selected item is changed
+        public string[] Versions => _packageData.Versions.Select(v => v.Id).ToArray();
+
+        //UNDONE: handle when selected version is changed
         public int SelectedVersionIndex { get; set; }
 
-        public static PackageItem ConvertFrom(PackageData packageData)
+        private int _downloadPercent;
+        public int DownloadPercent
         {
-            return new PackageItem
+            get
             {
-                Id = packageData.Id,
-                IconUrl = packageData.IconUrl,
-                Title = packageData.Title,
-                Description = packageData.Description,
-                Versions = packageData.Versions.Select(v => v.Id).ToList()
-            };
+                return _downloadPercent;
+            }
+            set
+            {
+                _downloadPercent = value;
+                OnPropertyChanged();
+            }
         }
-                
-        public string GetSelectedPackage()
+
+        private PackageData _packageData;
+        private InstallerViewModel _viewModel;
+
+        public PackageItem(InstallerViewModel viewModel, PackageData data)
         {
-            //UNDONE: get selected package: id+version
-            throw new NotImplementedException();
+            _viewModel = viewModel;
+            _packageData = data;
         }
+
+        #region INotifyPropertyChanged implementation
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion        
     }
 }

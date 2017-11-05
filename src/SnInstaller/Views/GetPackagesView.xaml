@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SenseNet.Installer.Views.GetPackagesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SenseNet.Installer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <StackPanel>
+        <TextBlock Style="{StaticResource HeaderMain}" Text="Acquiring packages" />
+        <StackPanel Style="{StaticResource MessagePanel}" Margin="5" Visibility="Collapsed">
+            <TextBlock TextWrapping="Wrap" FontSize="12" Text="" Width="464" />
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Path=SelectedPackages}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="10" Grid.Column="1">
+                            <TextBlock Text="{Binding Id}" FontSize="18" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}" FontSize="12" Foreground="Gray"/>
+                            <ProgressBar Name="progressBar" Width="Auto" Height="10" Value="{Binding DownloadPercent}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
