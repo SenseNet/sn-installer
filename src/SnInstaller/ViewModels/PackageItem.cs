@@ -7,6 +7,8 @@ namespace SenseNet.Installer.ViewModels
 {
     public class PackageItem : INotifyPropertyChanged
     {
+        private static readonly string DefaultIcon = "https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.ico";
+
         private bool _selected;
         public bool Selected
         {
@@ -19,7 +21,7 @@ namespace SenseNet.Installer.ViewModels
         }
 
         public string Id => _packageData.Id;
-        public string IconUrl => _packageData.IconUrl;
+        public string IconUrl => _packageData.IconUrl ?? DefaultIcon;
         public string Title => _packageData.Title;
         public string Description => _packageData.Description;
 

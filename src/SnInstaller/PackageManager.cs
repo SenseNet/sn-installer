@@ -139,7 +139,7 @@ namespace SenseNet.Installer
 
         private static PackageData[] _samplePackages = PackageData.SampleFeed;
 
-        public static async Task<PackageData[]> GetPackages()
+        public static async Task<PackageData[]> LoadFeed()
         {
             await Task.Delay(2000);
 

@@ -595,6 +595,15 @@ namespace SenseNet.Installer.ViewModels
                         ConsoleWriteLine(dataLine);
                     }
                     break;
+                case PageType.GetPackages:
+                    foreach (var packageItem in PackageItems)
+                    {
+                        packageItem.DownloadPercent = 0;
+                    }
+
+                    // start downloading packages on a background thread
+                    Task.Run(DownloadPackages);
+                    break;
             }
         }
 
@@ -1016,9 +1025,32 @@ namespace SenseNet.Installer.ViewModels
 
         private async Task<PackageItem[]> GetPackageItems()
         {
-            var packages = await PackageManager.GetPackages();
+            var packages = await PackageManager.LoadFeed();
 
             return packages.Select(p => new PackageItem(this, p)).ToArray();
+        }
+
+        private async Task DownloadPackages()
+        {
+            Working = true;
+
+            await Task.WhenAll(SelectedPackages.Select(p => DownloadPackage(p)));
+
+            Working = false;
+        }
+
+        private Random rnd { get; } = new Random();
+
+        private async Task DownloadPackage(PackageItem package)
+        {
+            //UNDONE: implement real download
+            var delay = rnd.Next(200, 600);
+
+            for(int i = 1; i <= 10; i++)
+            {
+                await Task.Delay(delay);
+                package.DownloadPercent = i * 10;
+            }
         }
     }
 }

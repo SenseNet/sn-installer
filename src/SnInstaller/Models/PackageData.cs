@@ -58,7 +58,6 @@ namespace SenseNet.Installer.Models
                 Id = "SenseNet.WebPages",
                 Title = "sensenet ECM WebPages",
                 Description = "WebForms UI",
-                IconUrl = "https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.ico",
                 Versions = new PackageVersion[]
                 {
                     new PackageVersion
@@ -92,7 +91,6 @@ namespace SenseNet.Installer.Models
                 Id = "SenseNet.Workspaces",
                 Title = "sensenet ECM Workspaces",
                 Description = "Workspace features",
-                IconUrl = "https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.ico",
                 Versions = new PackageVersion[]
                 {
                     new PackageVersion
