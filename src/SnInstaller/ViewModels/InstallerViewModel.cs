@@ -1046,11 +1046,16 @@ namespace SenseNet.Installer.ViewModels
             //UNDONE: implement real download
             var delay = rnd.Next(200, 600);
 
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 await Task.Delay(delay);
                 package.DownloadPercent = i * 10;
             }
+
+            //await PackageManager.DownloadPackage(package.Id, package.SelectedVersionId, package.SelectedVersion.Url, (id, version, p) => 
+            //{
+            //    package.DownloadPercent = p;
+            //});
         }
     }
 }

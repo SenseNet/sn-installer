@@ -14,17 +14,6 @@ namespace SenseNet.Installer.Models
         public string IconUrl { get; private set; }
 
         public PackageVersion[] Versions { get; private set; }
-        
-
-        //public PackageData(string id, string title, string description = null, string icon = "/sensenet.ico")
-        //{
-        //    Id = id;
-        //    Title = title;
-        //    Description = description;
-        //    IconUrl = icon;
-
-        //    Versions = new List<string> { "7.0.0-beta1", "7.0.0-beta2" };
-        //}
 
         internal static PackageData[] SampleFeed = new PackageData[]
         {
@@ -32,24 +21,26 @@ namespace SenseNet.Installer.Models
             {
                 Id = "SenseNet.Services",
                 Title = "sensenet ECM Services",
-                Description = "Core layer",
-                IconUrl = "https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.ico",
+                Description = "Core layer",                
                 Versions = new PackageVersion[] 
                 {
                     new PackageVersion
                     {
                         Id = "7.0.0-beta1",
-                        Dependencies = new PackageDependency[0]
+                        Dependencies = new PackageDependency[0],
+                        Url = "https://www.nuget.org/api/v2/package/SenseNet.Services/7.0.0-beta3"
                     },
                     new PackageVersion
                     {
                         Id = "7.0.0-beta2",
-                        Dependencies = new PackageDependency[0]
+                        Dependencies = new PackageDependency[0],
+                        Url = "https://www.nuget.org/api/v2/package/SenseNet.Services/7.0.0-beta3"
                     },
                     new PackageVersion
                     {
                         Id = "7.0.0-beta3",
-                        Dependencies = new PackageDependency[0]
+                        Dependencies = new PackageDependency[0],
+                        Url = "https://www.nuget.org/api/v2/package/SenseNet.Services/7.0.0-beta3"
                     }
                 }
             },
@@ -63,6 +54,7 @@ namespace SenseNet.Installer.Models
                     new PackageVersion
                     {
                         Id = "7.0.0-beta1",
+                        Url = "https://www.nuget.org/api/v2/package/SenseNet.WebPages.Install/7.0.0-beta1",
                         Dependencies = new PackageDependency[]
                         {
                             new PackageDependency
@@ -75,6 +67,7 @@ namespace SenseNet.Installer.Models
                     new PackageVersion
                     {
                         Id = "7.0.0-beta2",
+                        Url = "https://www.nuget.org/api/v2/package/SenseNet.WebPages.Install/7.0.0-beta2",
                         Dependencies = new PackageDependency[]
                         {
                             new PackageDependency

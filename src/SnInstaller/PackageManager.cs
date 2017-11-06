@@ -7,11 +7,16 @@ using System.IO.Compression;
 using System.Text;
 using System.Threading.Tasks;
 using SenseNet.Installer.Models;
+using System.Net;
+using System.ComponentModel;
 
 namespace SenseNet.Installer
 {
     internal class PackageManager
     {
+        private static readonly string LocalPackageFolderName = "packages";
+        private static readonly string LocalPackageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\" + LocalPackageFolderName;
+
         public static async Task CreateEnvironment(string webfolderPath, string packagePath)
         {
             var adminPath = Path.Combine(webfolderPath, "Admin");
@@ -144,6 +149,35 @@ namespace SenseNet.Installer
             await Task.Delay(2000);
 
             return _samplePackages;
-        }                
+        }
+
+        public static void EnsureLocalPackageFolder()
+        {
+            if (!Directory.Exists(LocalPackageFolderPath))
+                Directory.CreateDirectory(LocalPackageFolderPath);
+        }
+
+        public static async Task DownloadPackage(string id, string version, string packageUrl, Action<string, string, int> downloadProgress)
+        {
+            var parentFolder = $"{LocalPackageFolderPath}\\{id}\\{version}";
+            if (!Directory.Exists(parentFolder))
+                Directory.CreateDirectory(parentFolder);
+
+            //UNDONE: check if package is already downloaded
+            var di = new DirectoryInfo(parentFolder);
+            if (di.GetFiles().Length > 0)
+            {                
+                downloadProgress(id, version, 100);
+                return;
+            }
+
+            var client = new WebClient();
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler((s, e) => 
+            {
+                downloadProgress(id, version, e.ProgressPercentage);
+            });
+
+            await client.DownloadFileTaskAsync(packageUrl, $"{parentFolder}\\{id}.{version}.zip");
+        }
     }
 }

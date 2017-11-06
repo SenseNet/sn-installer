@@ -29,6 +29,21 @@ namespace SenseNet.Installer.ViewModels
 
         //UNDONE: handle when selected version is changed
         public int SelectedVersionIndex { get; set; }
+        public string SelectedVersionId
+        {
+            get
+            {
+                return Versions[SelectedVersionIndex];
+            }
+        }
+
+        public PackageVersion SelectedVersion
+        {
+            get
+            {
+                return _packageData.Versions[SelectedVersionIndex];
+            }
+        }
 
         private int _downloadPercent;
         public int DownloadPercent

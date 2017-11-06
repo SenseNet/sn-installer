@@ -10,5 +10,6 @@ namespace SenseNet.Installer.Models
     {
         public string Id { get; set; }
         public PackageDependency[] Dependencies { get; set; } = new PackageDependency[0];
+        public string Url { get; set; }
     }
 }
